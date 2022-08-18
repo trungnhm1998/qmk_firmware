@@ -189,18 +189,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case COLEMAK:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_COLEMAK);
-      }
-      return false;
-      break;
-    case DVORAK:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_DVORAK);
-      }
-      return false;
-      break;
     case BACKLIT:
       if (record->event.pressed) {
         register_code(KC_RSFT);
@@ -218,32 +206,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case PLOVER:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          stop_all_notes();
-          PLAY_SONG(plover_song);
-        #endif
-        layer_off(_RAISE);
-        layer_off(_LOWER);
-        layer_off(_ADJUST);
-        layer_on(_PLOVER);
-        if (!eeconfig_is_enabled()) {
-            eeconfig_init();
-        }
-        keymap_config.raw = eeconfig_read_keymap();
-        keymap_config.nkro = 1;
-        eeconfig_update_keymap(keymap_config.raw);
-      }
-      return false;
-      break;
-    case EXT_PLV:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_gb_song);
-        #endif
-        layer_off(_PLOVER);
-      }
       return false;
       break;
   }
@@ -289,12 +251,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return true;
 }
 
-bool dip_switch_update_user(uint8_t index, bool active) {
+void dip_switch_update_user(uint8_t index, bool active) {
     switch (index) {
         case 0: {
-#ifdef AUDIO_ENABLE
             static bool play_sound = false;
-#endif
             if (active) {
 #ifdef AUDIO_ENABLE
                 if (play_sound) { PLAY_SONG(plover_song); }
@@ -306,9 +266,7 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 #endif
                 layer_off(_ADJUST);
             }
-#ifdef AUDIO_ENABLE
             play_sound = true;
-#endif
             break;
         }
         case 1:
@@ -318,7 +276,6 @@ bool dip_switch_update_user(uint8_t index, bool active) {
                 muse_mode = false;
             }
     }
-    return true;
 }
 
 void matrix_scan_user(void) {
