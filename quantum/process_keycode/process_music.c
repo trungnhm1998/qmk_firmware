@@ -68,6 +68,9 @@ static uint16_t music_sequence_interval = 100;
 #        endif
 float music_mode_songs[NUMBER_OF_MODES][5][2] = {CHROMATIC_SONG, GUITAR_SONG, VIOLIN_SONG, MAJOR_SONG};
 // float custom_music_mode_songs[NUMBER_OF_MODES][][2] = {CHROMATIC_SONG, GUITAR_SONG, VIOLIN_SONG, MICHISHIRUBE};
+float custom_music[][2]                       = MICHISHIRUBE_SONG;
+float isabellas_music[][2]                    = ISABELLAS_LULLABY_SONG;
+float number_one_music[][2]                   = NUMBER_ONE_SONG;
 float music_on_song[][2]                      = MUSIC_ON_SONG;
 float music_off_song[][2]                     = MUSIC_OFF_SONG;
 float midi_on_song[][2]                       = MIDI_ON_SONG;
@@ -301,14 +304,21 @@ void music_mode_cycle(void) {
     music_all_notes_off();
     music_mode = (music_mode + 1) % NUMBER_OF_MODES;
 #    ifdef AUDIO_ENABLE
-    if (music_mode == NUMBER_OF_MODES - 1)
+    switch (music_mode)
     {
-        float custom_song[][2] = MICHISHIRUBE_SONG;
-        PLAY_SONG(custom_song);
-    }
-    else
-    {
-        PLAY_SONG(music_mode_songs[music_mode]);
+        case NUMBER_OF_MODES:
+            PLAY_SONG(custom_music);
+            break;
+        case 0:
+            PLAY_SONG(isabellas_music);
+            break;
+            break;
+        case 1:
+            PLAY_SONG(number_one_music);
+            break;
+        default:
+            PLAY_SONG(music_mode_songs[music_mode]);
+            break;
     }
 #    endif
 }
