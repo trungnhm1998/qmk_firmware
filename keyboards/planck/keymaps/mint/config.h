@@ -16,6 +16,7 @@
 
 #pragma once
 #define AUDIO_INIT_DELAY
+#define TAPPING_TOGGLE 2
 
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(RICK_ROLL)
