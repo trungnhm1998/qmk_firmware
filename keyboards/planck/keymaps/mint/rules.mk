@@ -2,7 +2,7 @@ SRC += muse.c
 
 NKRO_ENABLE = yes            # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 AUDIO_ENABLE = yes
-TAP_DANCE_ENABLe = yes
+TAP_DANCE_ENABLE = yes
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes
 

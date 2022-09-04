@@ -16,6 +16,8 @@
 
 #pragma once
 #define AUDIO_INIT_DELAY
+#define TAPPING_TERM 175
+#define TAPPING_TERM_PER_KEY
 #define TAPPING_TOGGLE 2
 
 #ifdef AUDIO_ENABLE
