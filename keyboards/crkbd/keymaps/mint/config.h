@@ -21,7 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 //#define USE_MATRIX_I2C
-#define BONGO_ENABLE
 
 /* Select hand configuration */
 
@@ -31,10 +30,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define TAPPING_FORCE_HOLD
 //#define TAPPING_TERM 100
-
-#define ANIM_INVERT false
-#define ANIM_RENDER_WPM true
-#define FAST_TYPE_WPM 45
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
