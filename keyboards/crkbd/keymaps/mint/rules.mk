@@ -1,7 +1,12 @@
 RGBLIGHT_ENABLE = no    # Enable WS2812 RGB underlight.
 RGB_MATRIX_ENABLE = no
+MOUSEKEY_ENABLE = no    # Mouse keys
+CONSOLE_ENABLE = no     # Console for debug
+EXTRAKEY_ENABLE = no
+BOOTMAGIC_ENABLE = no
+COMMAND_ENABLE = no
+UNICODE_ENABLE = no
 
-MOUSEKEY_ENABLE = yes    # Mouse keys
 OLED_ENABLE     = yes
 OLED_DRIVER     = SSD1306
 OLED_DRIVER_ENABLE = yes
